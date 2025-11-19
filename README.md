@@ -2,12 +2,12 @@
 ## 1. Introduction
 I developed a high-performance triangle-to-quad-dominant conversion operator and it reaches SOTA effect with rich geometric filter control and globally post-merge consistent normals. Come and try it !!!
 
-<b>The technical details and source code will be released upon my SIGGRAPH 2026 paper!</b>
+<b>The technical details and source code will be released upon my SIGGRAPH 2026 paper accepted!</b>
 
 ### TODO
 - [x] Release Python API for researchers.
 - [ ] Release Blender Addon for 3D artists. <br>
-<b>Upon my SIGGRAPH 2026 paper released, </b>
+<b>Upon my SIGGRAPH 2026 paper accepted, </b>
 - [ ] Release Technical details.
 - [ ] Release Source Code.
 
@@ -115,3 +115,8 @@ print(f"Left {len(tri_faces)} tris")
   <em>Pic 5.  More results from my operator to indicate <b>globally normal consistent</b>.
 </em>
 </p>
+
+## License
+The license is based on the modified, 3-clause BSD-License.
+
+An informal summary is: do whatever you want, but include this operator's license text within your product.
