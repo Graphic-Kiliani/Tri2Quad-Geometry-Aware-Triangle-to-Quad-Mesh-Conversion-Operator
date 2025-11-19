@@ -2,11 +2,21 @@
 ## 1. Introduction
 I developed a high-performance triangle-to-quad-dominant conversion operator and it reaches SOTA effect with rich geometric filter control and globally post-merge consistent normals. Come and try it !!!
 
+<b>The technical details and source code will be released upon my SIGGRAPH 2026 paper!</b>
+
+### TODO
+- [x] Release Python API for researchers.
+- [ ] Release Blender Addon for 3D artists. <br>
+<b>Upon my SIGGRAPH 2026 paper released, </b>
+- [ ] Release Technical details.
+- [ ] Release Source Code.
+
+
 <p align="center">
   <img src="./assets/pic_2.png" width="600" alt="pic_2" />
 </p>
 <p align="center">
-  <em>Pic 1. Quality Comparison: Left: Self-developed operator; Middel: pymeshlab API;  Right: GT Tri Mesh
+  <em>Pic 1. <b>Quality Comparison</b>: Left: Self-developed operator; Middel: pymeshlab API;  Right: GT Tri Mesh
 </em>
 </p>
 
@@ -16,7 +26,7 @@ My operator indicates much higher topological & geometrical quality comparing to
   <img src="./assets/pic_3.png" width="600" alt="pic_2" />
 </p>
 <p align="center">
-  <em>Pic 2. Normal Consistent: Left: Other operators; Right: Self-developed operator<br>
+  <em>Pic 2. <b>Normal Consistent</b>: Left: Other operators; Right: Self-developed operator<br>
   (Red faces indicate inward-pointing normals, while white faces indicate outward-pointing normals.)
 </em>
 </p>
@@ -86,7 +96,7 @@ print(f"Left {len(tri_faces)} tris")
   <img src="./assets/pic_1.png" width="600" alt="pic_2" />
 </p>
 <p align="center">
-  <em>Pic 3. Quality Comparison: Left: Self-developed operator; Middel: pymeshlab API;  Right: GT Tri Mesh
+  <em>Pic 3. <b>Quality Comparison</b>: Left: Self-developed operator; Middel: pymeshlab API;  Right: GT Tri Mesh
 </em>
 </p>
 
@@ -94,7 +104,7 @@ print(f"Left {len(tri_faces)} tris")
   <img src="./assets/pic_4.png" width="600" alt="pic_2" />
 </p>
 <p align="center">
-  <em>Pic 4. More results from my operator to indicate great topological & geometrical quality.
+  <em>Pic 4. More results from my operator to indicate <b>great topological & geometrical quality</b>.
 </em>
 </p>
 
@@ -102,6 +112,6 @@ print(f"Left {len(tri_faces)} tris")
   <img src="./assets/pic_5.png" width="600" alt="pic_2" />
 </p>
 <p align="center">
-  <em>Pic 5.  More results from my operator to indicate globally normal consistent.
+  <em>Pic 5.  More results from my operator to indicate <b>globally normal consistent</b>.
 </em>
 </p>
