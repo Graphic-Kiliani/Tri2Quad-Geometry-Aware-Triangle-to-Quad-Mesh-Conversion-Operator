@@ -1,15 +1,35 @@
-### 1. Introduction
+# Triangle-to-Quadrilateral Conversion Operator
+## 1. Introduction
 I developed a high-performance triangle-to-quad-dominant conversion operator and it reaches SOTA effect with rich geometric filter control and globally post-merge consistent normals. Come and try it !!!
 
+<p align="center">
+  <img src="./assets/pic_2.png" width="600" alt="pic_2" />
+</p>
+<p align="center">
+  <em>Pic 1. Quality Comparison: Left: Self-developed operator; Middel: pymeshlab API;  Right: GT Tri Mesh
+</em>
+</p>
 
-### 2. Installation
+My operator indicates much higher topological & geometrical quality comparing to pymeshlab/blender build-in operator (e.g. meshing_tri_to_quad_dominant(level=2), 2:'Better quad shape').
+
+<p align="center">
+  <img src="./assets/pic_3.png" width="600" alt="pic_2" />
+</p>
+<p align="center">
+  <em>Pic 2. Normal Consistent: Left: Other operators; Right: Self-developed operator<br>
+  (Red faces indicate inward-pointing normals, while white faces indicate outward-pointing normals.)
+</em>
+</p>
+My operator indicates globally normal consistent comparing to some other tools. 
+
+## 2. Installation
 ```bash
 pip install quad_converter-1.0.0-cp311-cp311-linux_x86_64.whl
 ```
 
-### 3. Test
+## 3. Test
 
-####  Instructions
+###  Instructions
 ```bash
 # Test Python API
 python -c "import quad_converter; print(quad_converter.__version__)"
@@ -33,9 +53,7 @@ quad-convert \
 python test.py
 ```
 
-
-
-####  Python API
+###  Python API
 
 ```python
 import quad_converter
@@ -62,3 +80,28 @@ stats = result["merge_stats"]
 print(f"Generate {len(quad_faces)} quads")
 print(f"Left {len(tri_faces)} tris")
 ```
+## 4. More Results:
+
+<p align="center">
+  <img src="./assets/pic_1.png" width="600" alt="pic_2" />
+</p>
+<p align="center">
+  <em>Pic 3. Quality Comparison: Left: Self-developed operator; Middel: pymeshlab API;  Right: GT Tri Mesh
+</em>
+</p>
+
+<p align="center">
+  <img src="./assets/pic_4.png" width="600" alt="pic_2" />
+</p>
+<p align="center">
+  <em>Pic 4. More results from my operator to indicate great topological & geometrical quality.
+</em>
+</p>
+
+<p align="center">
+  <img src="./assets/pic_5.png" width="600" alt="pic_2" />
+</p>
+<p align="center">
+  <em>Pic 5.  More results from my operator to indicate globally normal consistent.
+</em>
+</p>
