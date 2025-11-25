@@ -84,8 +84,8 @@ def save_obj(output_path, vertices, quads, tris):
 
 def main():
     # write your own input and output paths here!!!
-    input_obj = "/vinowan-cfs/zyh/hybridgen/operator/1684_NiuMoWang_High.obj"
-    output_obj = "/vinowan-cfs/zyh/hybridgen/operator/1684_NiuMoWang_High_quad.obj"
+    input_obj = "<your input tri-obj path>"
+    output_obj = "<your output quad-dominant obj path>"
     
     vertices, triangles = load_obj(input_obj)
     

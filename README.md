@@ -34,6 +34,8 @@ My operator indicates globally normal consistent comparing to some other tools.
 
 ## 2. Installation
 ```bash
+conda create -n quad python=3.11 -y
+conda activate quad 
 pip install quad_converter-1.0.0-cp311-cp311-linux_x86_64.whl
 ```
 
