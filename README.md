@@ -1,13 +1,10 @@
 # Triangle-to-Quadrilateral Conversion Operator
 ## 1. Introduction
-I developed a high-performance triangle-to-quad-dominant conversion operator and it reaches SOTA effect with rich geometric filter control and globally post-merge consistent normals. Come and try it !!!
-
-<b>The technical details and source code will be released upon my SIGGRAPH 2026 paper accepted!</b>
+I developed a high-performance triangle-to-quad-dominant conversion operator and it reaches SOTA effect with rich geometric filter control and globally post-merge consistent normals. 
 
 ### TODO
 - [x] Release Python API for researchers.
 - [ ] Release Blender Addon for 3D artists. <br>
-<b>Upon my SIGGRAPH 2026 paper accepted, </b>
 - [ ] Release Technical details.
 - [ ] Release Source Code.
 
