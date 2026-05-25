@@ -1,6 +1,6 @@
-# Triangle-to-Quadrilateral Conversion Operator
+# Tri-to-Quad Operator
 ## 1. Introduction
-I developed a high-performance triangle-to-quad-dominant conversion operator and it reaches SOTA effect with rich geometric filter control and globally post-merge consistent normals. 
+I developed a high-performance Tri-to-Quad Operator and it reaches SOTA effect with rich geometric filter control and globally post-merge consistent normals. 
 
 ### TODO
 - [x] Release Python API for researchers.
