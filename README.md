@@ -1,13 +1,14 @@
 # Tri-to-Quad Operator
 ## 1. Introduction
-I developed a high-performance Tri-to-Quad Operator and it reaches SOTA effect with rich geometric filter control and globally post-merge consistent normals. 
+We developed a high-performance Tri-to-Quad Operator and it reaches SOTA effect with rich geometric filter control and globally post-merge consistent normals. 
 
 ### TODO
 - [x] Release Python API for researchers.
+- [x] Release Technical details.
 - [ ] Release Blender Addon for 3D artists. <br>
-- [ ] Release Technical details.
 - [ ] Release Source Code.
 
+The technical details of our operator can be found in [QuadLink: Autoregressive Quad-Dominant Mesh Generation via Point-Relation Learning](https://arxiv.org/abs/2605.16813).
 
 <p align="center">
   <img src="./assets/pic_2.png" width="600" alt="pic_2" />
