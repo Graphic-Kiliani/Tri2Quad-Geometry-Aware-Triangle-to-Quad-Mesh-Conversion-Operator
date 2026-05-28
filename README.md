@@ -8,8 +8,6 @@ We developed a high-performance Tri-to-Quad Operator and it reaches SOTA effect 
 - [ ] Release Blender Addon for 3D artists. <br>
 - [ ] Release Source Code.
 
-The technical details of our operator can be found in [QuadLink: Autoregressive Quad-Dominant Mesh Generation via Point-Relation Learning](https://arxiv.org/abs/2605.16813).
-
 <p align="center">
   <img src="./assets/pic_2.png" width="600" alt="pic_2" />
 </p>
