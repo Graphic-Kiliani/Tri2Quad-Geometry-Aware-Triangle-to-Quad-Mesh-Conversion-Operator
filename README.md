@@ -1,6 +1,10 @@
 # Tri-to-Quad Operator
 
-Converts triangle meshes to quad-dominant meshes for [QuadLink](https://github.com/Graphic-Kiliani/QuadLink). Geometric filters screen candidate pairs before global matching.
+Tri2Quad converts triangle meshes into quad-dominant meshes. We used it to curate the training data for [QuadLink](https://github.com/Graphic-Kiliani/QuadLink).
+
+The operator filters adjacent triangle pairs by geometry and selects disjoint merges using maximum-weight matching. Unmatched triangles stay in the output. See the method and implementation details in the [QuadLink paper](https://arxiv.org/abs/2605.16813).
+
+<img src="assets/conversion.webp" width="800" alt="The same mesh before and after Tri2Quad conversion, from 12,924 triangles to 5,676 quads and 1,572 triangles">
 
 ## Install
 
@@ -23,6 +27,8 @@ quad-convert --input mesh.fbx --output mesh_quad.obj \
 
 The input must be triangulated. From Python, call `quad_converter.tri_to_quad(vertices, faces, method="global")`. Run `python test.py` for a small example.
 
+Compared with the previous release, this version adds three optional controls for producing production-ready quad-dominant meshes.
+
 ## Symmetry
 
 `--enable_symmetry_protect` detects a reflection plane and keeps edges on it.
@@ -41,4 +47,4 @@ The input must be triangulated. From Python, call `quad_converter.tri_to_quad(ve
 
 <img src="assets/spiral.webp" width="690" alt="The same tube before and after spiral repair, with winding edges highlighted in red before repair">
 
-[Paper](https://arxiv.org/abs/2605.16813) · [License](LICENSE) · [LEMON license](third_party/LEMON-LICENSE)
+[License](LICENSE) · [LEMON license](third_party/LEMON-LICENSE)
