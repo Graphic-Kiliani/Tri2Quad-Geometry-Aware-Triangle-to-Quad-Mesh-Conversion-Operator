@@ -1,120 +1,44 @@
 # Tri-to-Quad Operator
-## 1. Introduction
-We developed a high-performance Tri-to-Quad Operator and it reaches SOTA effect with rich geometric filter control and globally post-merge consistent normals. 
 
-### TODO
-- [x] Release Python API for researchers.
-- [x] Release Technical details.
-- [ ] Release Blender Addon for 3D artists. <br>
-- [ ] Release Source Code.
+Converts triangle meshes to quad-dominant meshes for [QuadLink](https://github.com/Graphic-Kiliani/QuadLink). Geometric filters screen candidate pairs before global matching.
 
-<p align="center">
-  <img src="./assets/pic_2.png" width="600" alt="pic_2" />
-</p>
-<p align="center">
-  <em>Pic 1. <b>Quality Comparison</b>: Left: Self-developed operator; Middel: pymeshlab API;  Right: GT Tri Mesh
-</em>
-</p>
+## Install
 
-My operator indicates much higher topological & geometrical quality comparing to pymeshlab/blender build-in operator (e.g. meshing_tri_to_quad_dominant(level=2), 2:'Better quad shape').
+On Linux, use Python 3.9 or newer, Python development headers, and a C++17 compiler.
 
-<p align="center">
-  <img src="./assets/pic_3.png" width="600" alt="pic_2" />
-</p>
-<p align="center">
-  <em>Pic 2. <b>Normal Consistent</b>: Left: Other operators; Right: Self-developed operator<br>
-  (Red faces indicate inward-pointing normals, while white faces indicate outward-pointing normals.)
-</em>
-</p>
-My operator indicates globally normal consistent comparing to some other tools. 
-
-## 2. Installation
-```bash
-conda create -n quad python=3.11 -y
-conda activate quad 
-pip install quad_converter-1.0.0-cp311-cp311-linux_x86_64.whl
+```sh
+python -m pip install .
 ```
 
-## 3. Test
+For FBX, install the Assimp development library (`libassimp-dev` on Ubuntu) and run `python -m pip install '.[fbx]'`.
 
-###  Instructions
-```bash
-# Test Python API
-python -c "import quad_converter; print(quad_converter.__version__)"
+## Use
 
-# Test Command Line Tools, we provide high control of geometric attributes, check it here!
-quad-convert --help
+```sh
+quad-convert --input mesh.obj --output mesh_quad.obj
 
-# Test conversion
-# Basic Usage
-quad-convert --input test.obj --output test_quad.obj --verbose
-
-# Usage with parameter
-quad-convert \
-  --input model.obj \
-  --output model_quad.obj \
-  --angle_threshold 150 \
-  --method blossom \
-  --verbose
-
-# test.py for tri-obj input and ouput quad-output
-python test.py
+quad-convert --input mesh.fbx --output mesh_quad.obj \
+  --split_by_uv --enable_symmetry_protect --repair_spirals --detect_spirals
 ```
 
-###  Python API
+The input must be triangulated. From Python, call `quad_converter.tri_to_quad(vertices, faces, method="global")`. Run `python test.py` for a small example.
 
-```python
-import quad_converter
-import numpy as np
+## Symmetry
 
-# Prepare Mesh Data
-vertices = np.array([...], dtype=np.float64)  # (N, 3)
-triangles = np.array([...], dtype=np.int32)   # (M, 3)
+`--enable_symmetry_protect` detects a reflection plane and keeps edges on it.
 
-# Convert to quad dominant mesh
-result = quad_converter.convert_tri_to_quad(
-    vertices=vertices,
-    triangles=triangles,
-    angle_threshold_deg=150.0,
-    matching_method="blossom"
-)
+<img src="assets/symmetry.webp" width="720" alt="Paper figure showing edges retained on the detected symmetry plane">
 
-# Results
-new_vertices = result["new_vertices"]
-quad_faces = result["quads"]
-tri_faces = result["tris"]
-stats = result["merge_stats"]
+## UV seams
 
-print(f"Generate {len(quad_faces)} quads")
-print(f"Left {len(tri_faces)} tris")
-```
-## 4. More Results:
+`--split_by_uv` converts FBX UV islands separately, keeping their seams and UV coordinates.
 
-<p align="center">
-  <img src="./assets/pic_1.png" width="600" alt="pic_2" />
-</p>
-<p align="center">
-  <em>Pic 3. <b>Quality Comparison</b>: Left: Self-developed operator; Middel: pymeshlab API;  Right: GT Tri Mesh
-</em>
-</p>
+<img src="assets/uv.webp" width="530" alt="Paper figure showing the mesh and UV layout before and after conversion">
 
-<p align="center">
-  <img src="./assets/pic_4.png" width="600" alt="pic_2" />
-</p>
-<p align="center">
-  <em>Pic 4. More results from my operator to indicate <b>great topological & geometrical quality</b>.
-</em>
-</p>
+## Spiral repair
 
-<p align="center">
-  <img src="./assets/pic_5.png" width="600" alt="pic_2" />
-</p>
-<p align="center">
-  <em>Pic 5.  More results from my operator to indicate <b>globally normal consistent</b>.
-</em>
-</p>
+`--repair_spirals` changes local triangle pairings to reduce winding without losing quads. Red marks the detected winding edges. On this synthetic tube, the count drops from 59 to 0 with 191 quads in both meshes.
 
-## License
-The license is based on the modified, 3-clause BSD-License.
+<img src="assets/spiral.webp" width="690" alt="The same tube before and after spiral repair, with winding edges highlighted in red before repair">
 
-An informal summary is: do whatever you want, but include this operator's license text within your product.
+[Paper](https://arxiv.org/abs/2605.16813) · [License](LICENSE) · [LEMON license](third_party/LEMON-LICENSE)

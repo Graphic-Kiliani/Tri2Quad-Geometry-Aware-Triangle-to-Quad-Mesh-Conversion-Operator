@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=77", "wheel", "pybind11>=2.12", "cmake>=3.18"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "quad-converter"
+version = "1.1.0"
+description = "Triangle-to-quad mesh conversion"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT AND BSL-1.0"
+license-files = ["LICENSE", "third_party/LEMON-LICENSE"]
+dependencies = ["numpy>=1.21", "trimesh>=3.9"]
+
+[project.optional-dependencies]
+fbx = ["pyassimp>=5.2.5"]
+
+[project.scripts]
+quad-convert = "tri2quad:main"
+
+[tool.setuptools]
+packages = ["quad_converter"]
+package-dir = {quad_converter = "python/quad_converter"}
+py-modules = ["tri2quad"]
